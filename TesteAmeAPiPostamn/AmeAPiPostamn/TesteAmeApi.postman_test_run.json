@@ -1,0 +1,165 @@
+{
+	"id": "73899cb5-0b54-432f-a621-3f62d39de646",
+	"name": "TesteAmeApi",
+	"timestamp": "2020-07-08T20:49:52.806Z",
+	"collection_id": "f4abdfc6-47a8-45df-b9ec-a6c02672d3b2",
+	"folder_id": 0,
+	"environment_id": "1c929bf7-66ee-479c-99c8-aa1e1b04595d",
+	"totalPass": 7,
+	"totalFail": 5,
+	"results": [
+		{
+			"id": "9abf5c32-63ac-4937-ab65-0f27262426ac",
+			"name": "POST employee",
+			"url": "http://dummy.restapiexample.com/api/v1/create",
+			"time": 814,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Name: Gabriel": true,
+				"Salary: 4000": true,
+				"Age: 31": true,
+				"Reason: Success": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Name: Gabriel": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Salary: 4000": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Age: 31": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Reason: Success": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				814
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Name: Gabriel": true,
+					"Salary: 4000": true,
+					"Age: 31": true,
+					"Reason: Success": true
+				}
+			]
+		},
+		{
+			"id": "3ed07ba7-2e3d-4a07-bc9c-b6ee5b5579a0",
+			"name": "GET specific employee",
+			"url": "http://dummy.restapiexample.com/api/v1/employee/93",
+			"time": 749,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 200": false,
+				"Name: Gabriel": false,
+				"Salary: 4000": false,
+				"Age: 31": false,
+				"Success": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Name: Gabriel": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Salary: 4000": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Age: 31": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Success": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				749
+			],
+			"allTests": [
+				{
+					"Status code is 200": false,
+					"Name: Gabriel": false,
+					"Salary: 4000": false,
+					"Age: 31": false,
+					"Success": false
+				}
+			]
+		},
+		{
+			"id": "af5932b1-e590-4f63-b5f1-a3f681321659",
+			"name": "DELETE employee",
+			"url": "http://dummy.restapiexample.com/api/v1/delete/93",
+			"time": 756,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Status is sucess": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status is sucess": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				756
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Status is sucess": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2319,
+	"collection": {
+		"requests": [
+			{
+				"id": "9abf5c32-63ac-4937-ab65-0f27262426ac",
+				"method": "POST"
+			},
+			{
+				"id": "3ed07ba7-2e3d-4a07-bc9c-b6ee5b5579a0",
+				"method": "GET"
+			},
+			{
+				"id": "af5932b1-e590-4f63-b5f1-a3f681321659",
+				"method": "DELETE"
+			}
+		]
+	}
+}

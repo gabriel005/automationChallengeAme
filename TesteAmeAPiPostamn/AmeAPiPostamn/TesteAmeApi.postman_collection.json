@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "f4abdfc6-47a8-45df-b9ec-a6c02672d3b2",
+		"name": "TesteAmeApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b2db417-cd34-46a7-b9b6-8e86cf633329",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var employeeResponse = pm.response.json();\r",
+							"\r",
+							"var name = pm.environment.get(\"name\");\r",
+							"var salary = pm.environment.get(\"salary\");\r",
+							"var age = pm.environment.get(\"age\");\r",
+							"\r",
+							"pm.environment.set(\"id\",employeeResponse.data.id);\r",
+							"\r",
+							"pm.test(\"Name: \" + name, function () {\r",
+							"    pm.expect(name).to.eql(employeeResponse.data.name);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Salary: \" + salary, function () {\r",
+							"    pm.expect(salary).to.eql(employeeResponse.data.salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Age: \" + age, function () {\r",
+							"    pm.expect(age).to.eql(employeeResponse.data.age);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Reason: \" + \"Success\", function () {\r",
+							"    pm.expect(\"success\").to.eql(employeeResponse.status);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1279061c-0751-44a9-bf7e-500d5e27a163",
+						"exec": [
+							"var name    = pm.environment.set(\"name\", \"Gabriel\");\r",
+							"var salary  = pm.environment.set(\"salary\", \"4000\");\r",
+							"var age     = pm.environment.set(\"age\", \"31\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{name}}\",\r\n    \"salary\":\"{{salary}}\",\r\n    \"age\":\"{{age}}\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/create",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET specific employee",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "80f66a97-7bf8-47d0-a100-06185992bebf",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f61ccc44-04c5-40d8-99ff-88df597b2744",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var employeeResponse = pm.response.json();\r",
+							"\r",
+							"var name =  pm.environment.get(\"name\");\r",
+							"var salary = pm.environment.get(\"salary\");\r",
+							"var age = pm.environment.get(\"age\");\r",
+							"\r",
+							"pm.test(\"Name: \" + name, function () {\r",
+							"    pm.expect(name).to.eql(employeeResponse.data.name);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Salary: \" + salary, function () {\r",
+							"    pm.expect(salary).to.eql(employeeResponse.data.salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Age: \" + age, function () {\r",
+							"    pm.expect(age).to.eql(employeeResponse.data.age);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Success\", function () {\r",
+							"    pm.expect(\"success\").to.eql(employeeResponse.status);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{name}}\",\r\n    \"salary\":\"{{salary}}\",\r\n    \"age\":\"{{age}}\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employee/{{id}}",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e6b698ff-3302-42c2-b398-30ed88e2b4cf",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {     \r",
+							"    pm.response.to.have.status(200); });  \r",
+							"\r",
+							"var deletedResponse = pm.response.json();  \r",
+							"pm.test(\"Status is sucess\", function () {    \r",
+							"    pm.expect(\"success\").to.eql(deletedResponse.status); \r",
+							"    }); \r",
+							"    (\"Message is OK\", function () {    \r",
+							"        pm.expect(\"successfully! deleted Records\").to.eql(deletedResponse.message); });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b277f154-af87-4627-89ed-bcf11d6173fb",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/delete/{{id}}",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"delete",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1bb2609b-6b48-4f17-a664-3ff3a4dc80a7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "62a04932-c1fc-4cab-81d7-1f3d30993b44",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
